@@ -16,13 +16,11 @@
 
 // File:    BFNetwork.h
 //
-
-#if !defined (BFNETWORK_H)
-#define BFNETWORK_H
+#pragma once
 
 #include <afxsock.h>
 
+
 CString getServerIP();
 
-#endif
 

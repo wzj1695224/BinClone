@@ -29,15 +29,13 @@
 //---------------------------------------------------------------------------
 
 #include "BFPch.h"
-
-#if !defined(BFXMLPSER_H)
-	#include "BFXmlPser.h"
-#endif
+#include "BFXmlPser.h"
 
 #define BF_XML_HEADER   _T("<?xml version=\"1.0\" ?>\n")
 //#define BF_XML_HEADER   _T("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n")
 //#define BF_XML_HEADER   _T("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
 #define BF_XML_NUM_DECIMALS     6
+
 
 //--------------------------------------------------------------------
 // XML node

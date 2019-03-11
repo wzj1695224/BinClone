@@ -26,40 +26,25 @@
 //---------------------------------------------------------------------------
 
 #include "BFPch.h"
+#include "BFStrHelper.h"
 
-#if !defined(BFSTRHELPER_H)
-	#include "BFStrHelper.h"
-#endif
 
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
-CBFStrHelper::CBFStrHelper()
-{
-}
-
-CBFStrHelper::~CBFStrHelper()
-{
-}
-
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
-void CBFStrHelper::trim(CString& str)
+void CBFStrHelper::trim(CString &str)
 {
     str.TrimLeft();
     str.TrimRight();
 }
 
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
-bool CBFStrHelper::isNumeric(const CString& str)
+
+bool CBFStrHelper::isNumeric(const CString &str)
 {
     int len = str.GetLength();
-    for (int i = 0; i < len; ++i) {
+    for (int i = 0; i < len; ++i)
+	{
         switch (str[i])
         {
         case '0': case '1': case '2': case '3': case '4': case '5': 
         case '6': case '7': case '8': case '9': case '.':
-          //do nothing
           break;
         default:
           return false;
@@ -67,6 +52,7 @@ bool CBFStrHelper::isNumeric(const CString& str)
     }
     return true;
 }
+
 
 //--------------------------------------------------------------------
 // 0x45F3D is a hex
@@ -81,9 +67,10 @@ bool CBFStrHelper::isHex(LPCTSTR str)
 	return (1 == _stscanf_s(str, _T("%x%c"), &dw, &ch));
 }
 
+
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------
-void CBFStrHelper::intToStr(int i, CString& str)
+void CBFStrHelper::intToStr(int i, CString &str)
 {
 	char buffer[64];
 	_itoa_s(i, buffer, 10);
@@ -93,9 +80,10 @@ void CBFStrHelper::intToStr(int i, CString& str)
         str = buffer;
 }
 
+
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------
-void CBFStrHelper::floatToStr(double d, int nDecimals, CString& str)
+void CBFStrHelper::floatToStr(double d, int nDecimals, CString &str)
 {
     char buffer[100];
     sprintf_s (buffer, "%.*f", nDecimals, d);
@@ -105,12 +93,14 @@ void CBFStrHelper::floatToStr(double d, int nDecimals, CString& str)
         str = buffer;
 }
 
+
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------
 int CBFStrHelper::strToInt(const TCHAR* string)
 {
     return _tstoi(string);
 }
+
 
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------
@@ -119,10 +109,11 @@ double CBFStrHelper::strToFloat(const TCHAR* string)
     return _tstof(string);
 }
 
+
 //--------------------------------------------------------------------
 // Convert CStringA to bool
 //--------------------------------------------------------------------
-bool CBFStrHelper::strAToBool(const CStringA& ansiStr, bool& boolVal)
+bool CBFStrHelper::strAToBool(const CStringA &ansiStr, bool &boolVal)
 {
     if (ansiStr.CompareNoCase("true") == 0 ||  ansiStr.CompareNoCase("t") == 0) {
         boolVal = true;
@@ -138,19 +129,21 @@ bool CBFStrHelper::strAToBool(const CStringA& ansiStr, bool& boolVal)
     }
 }
 
+
 //--------------------------------------------------------------------
 // Convert bool to CString
 //--------------------------------------------------------------------
-bool CBFStrHelper::boolToStr(bool boolVal, CString& str) 
+bool CBFStrHelper::boolToStr(bool boolVal, CString &str) 
 {
     boolVal ? str = CString(_T("true")) : str = CStringA(_T("false"));
     return true;
 }
 
+
 //--------------------------------------------------------------------
 // Convert CString to CStringA
 //--------------------------------------------------------------------
-bool CBFStrHelper::convertCStringToCStringA(const CString& str, CStringA& ansiStr)
+bool CBFStrHelper::convertCStringToCStringA(const CString &str, CStringA &ansiStr)
 {
 #if defined(UNICODE) || defined(_UNICODE)
     const size_t newsizew = (str.GetLength() + 1) * 2;
@@ -170,10 +163,11 @@ bool CBFStrHelper::convertCStringToCStringA(const CString& str, CStringA& ansiSt
 #endif
 }
 
+
 //--------------------------------------------------------------------
 // Convert CStringA to CString
 //--------------------------------------------------------------------
-bool CBFStrHelper::convertCStringAToCString(const CStringA& ansiStr, CString& str)
+bool CBFStrHelper::convertCStringAToCString(const CStringA &ansiStr, CString &str)
 {
 #if defined(UNICODE) || defined(_UNICODE)
     const size_t newsizew = (ansiStr.GetLength() + 1);

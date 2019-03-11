@@ -18,15 +18,11 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(BFXMLPSER_H)
-#define BFXMLPSER_H
+#pragma once
 
 #include <objbase.h>
 #include <msxml6.h>
 
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
 
 //--------------------------------------------------------------------
 // XML node
@@ -59,6 +55,7 @@ protected:
 	CComPtr<IXMLDOMNode> m_pNode;
 };
 
+
 //--------------------------------------------------------------------
 // XML node list
 //--------------------------------------------------------------------
@@ -78,6 +75,7 @@ public:
 protected:
 	CComPtr<IXMLDOMNodeList> m_pNodeList;
 };
+
 
 //--------------------------------------------------------------------
 // XML document
@@ -104,4 +102,3 @@ protected:
 	CString m_xmlFile;
 };
 
-#endif // !defined(BXMLPSER_H)

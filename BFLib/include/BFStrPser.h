@@ -18,18 +18,16 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(BFSTRPSER_H)
-#define BFSTRPSER_H
+#pragma once
 
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
+
 class CBFStrParser
 {
 public:
     CBFStrParser(LPCTSTR str, TCHAR delimeter);
     virtual ~CBFStrParser();
 
-    bool getNext(CString& s);
+    bool getNext(CString &s);
     void reset() { m_idx = -1; };
 
 protected:
@@ -38,4 +36,3 @@ protected:
     int m_idx;
 };
 
-#endif

@@ -58,12 +58,11 @@ BOOL ClonePairsAsmDoc::OnNewDocument()
 	newDetectDlg.DoModal();
 	if( newDetectDlg.m_ok)
 	{
-		CBFStrHelper strHelper;
 		try
 		{
 			bool bfindExact               = newDetectDlg.m_bFindExactClonesChk ? true : false;
 			bool bfindInExact             = newDetectDlg.m_bFindInexactClonesChk ? true : false;			
-			double occurrenceThrs         = strHelper.strToFloat(newDetectDlg.m_occurrenceThrs);
+			double occurrenceThrs         = CBFStrHelper::strToFloat(newDetectDlg.m_occurrenceThrs);
             bool bNormalizeToken          = newDetectDlg.m_bNormalizeTokenChk ? true : false;
             int inexactMTD                = newDetectDlg.m_inexactMethodLevel; 
 			int dbParamId                 = newDetectDlg.m_db_param_id;

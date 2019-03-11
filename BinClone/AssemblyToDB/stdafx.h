@@ -55,9 +55,7 @@ using namespace std;
     #define tcout std::cout
 #endif
 
-#if !defined(BFPCH_H)
-    #include "BFPch.h"
-#endif
+#include "BFPch.h"
 
 #include "CSDef.hpp"
 #include "CSMain.h"

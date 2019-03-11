@@ -17,7 +17,7 @@
 
 #include "StdAfx.h"
 #include "CloneFiles.h"
-#include "BFStrHelper.h"
+#include "BFPch.h"
 
 
 
@@ -124,7 +124,6 @@ bool CloneFiles::init( const CString & p_xmlFile, CString & p_errorInfo)
 
 bool CloneFiles::extractParameter(CBFXmlNode&  p_Node)
 {
-	CBFStrHelper strHelper;
 	if( p_Node.isEmpty())
 	{
 		AfxMessageBox(_T("Error in parsing parameter, node is empty."));
@@ -163,7 +162,7 @@ bool CloneFiles::extractParameter(CBFXmlNode&  p_Node)
                AfxMessageBox(_T("Error in parsing windowSize, getText returned failure."));
                continue;
             }
-            m_windSize = strHelper.strToInt(value);
+            m_windSize = CBFStrHelper::strToInt(value);
 		}
 		else if( StrCmp ( childName, _T("stride")) == 0 )
 		{
@@ -173,7 +172,7 @@ bool CloneFiles::extractParameter(CBFXmlNode&  p_Node)
                AfxMessageBox(_T("Error in parsing stride, getText returned failure."));
                continue;
             }
-            m_stride = strHelper.strToInt(value);
+            m_stride = CBFStrHelper::strToInt(value);
 		}
 		else if( StrCmp ( childName, _T("maxKOperands")) == 0 )
 		{
@@ -183,7 +182,7 @@ bool CloneFiles::extractParameter(CBFXmlNode&  p_Node)
                AfxMessageBox(_T("Error in parsing mazKOperands, getText returned failure."));
                continue;
             }
-            m_maxKOperands = strHelper.strToInt(value);
+            m_maxKOperands = CBFStrHelper::strToInt(value);
 		}
 		else if( StrCmp ( childName, _T("maxOverlapFraction")) == 0 )
 		{
@@ -193,7 +192,7 @@ bool CloneFiles::extractParameter(CBFXmlNode&  p_Node)
                AfxMessageBox(_T("Error in parsing maxOverlapFraction, getText returned failure."));
                continue;
             }
-            m_maxOverlapFraction = strHelper.strToFloat(value);
+            m_maxOverlapFraction = CBFStrHelper::strToFloat(value);
 		}
 		else if( StrCmp ( childName, _T("bFindExactClones")) == 0 )
 		{
@@ -241,7 +240,7 @@ bool CloneFiles::extractParameter(CBFXmlNode&  p_Node)
                AfxMessageBox(_T("Error in parsing keyVectorSize, getText returned failure."));
                continue;
             }
-            m_keyVectorsSize = strHelper.strToInt(value);
+            m_keyVectorsSize = CBFStrHelper::strToInt(value);
 		}
 		else if( StrCmp ( childName, _T("occThreshold")) == 0 )
 		{
@@ -251,7 +250,7 @@ bool CloneFiles::extractParameter(CBFXmlNode&  p_Node)
                AfxMessageBox(_T("Error in parsing occThreshold, getText returned failure."));
                continue;
             }
-            m_occurrenceThrs = strHelper.strToFloat(value);
+            m_occurrenceThrs = CBFStrHelper::strToFloat(value);
 		}
 		
         		else if( StrCmp ( childName, _T("inexactMethod")) == 0 )
@@ -281,8 +280,6 @@ bool CloneFiles::extractParameter(CBFXmlNode&  p_Node)
 
 bool CloneFiles::extractAsmFiles(CBFXmlNode&   p_Node)
 {
-	CBFStrHelper strHelper;
-	
 	m_asmFilesMap.clear(); // clear up 
 
 	if( p_Node.isEmpty())
@@ -295,7 +292,7 @@ bool CloneFiles::extractAsmFiles(CBFXmlNode&   p_Node)
 	CString tmp(_T(""));
 	if( p_Node.getAttribute(_T("nFiles"),tmp))
 	{
-		nFile = strHelper.strToInt(tmp);
+		nFile = CBFStrHelper::strToInt(tmp);
 	    /*
 		CString n;
 		n.Format(_T("nFiles=%d"),nFile);
@@ -341,7 +338,7 @@ bool CloneFiles::extractAsmFiles(CBFXmlNode&   p_Node)
 			   } 
             }
 			unsigned fileId=0;
-			fileId= strHelper.strToInt(value);
+			fileId= CBFStrHelper::strToInt(value);
 
 			attrName = _T("path");
 			if( childNode.hasAttribute(attrName))
@@ -381,8 +378,6 @@ bool CloneFiles::extractAsmFiles(CBFXmlNode&   p_Node)
 
 bool CloneFiles::extractCloneFiles(CBFXmlNode& p_Node)
 {
-	CBFStrHelper strHelper;
-	
 	m_cloneFileVector.clear(); // clear up 
 
 	if( p_Node.isEmpty())
@@ -395,7 +390,7 @@ bool CloneFiles::extractCloneFiles(CBFXmlNode& p_Node)
 	CString tmp(_T(""));
 	if( p_Node.getAttribute(_T("nCloneFilePairs"),tmp))
 	{
-		nCloneFilePairs = strHelper.strToInt(tmp);
+		nCloneFilePairs = CBFStrHelper::strToInt(tmp);
 	    /*
 		CString n;
 		n.Format(_T("nCloneFilePairs=%d"),nCloneFilePairs);
@@ -408,7 +403,7 @@ bool CloneFiles::extractCloneFiles(CBFXmlNode& p_Node)
 	tmp = _T("");
 	if( p_Node.getAttribute(_T("nTotalClonePairs"),tmp))
 	{
-		nTotalClonePairs = strHelper.strToInt(tmp);
+		nTotalClonePairs = CBFStrHelper::strToInt(tmp);
 	    /*
 		CString n;
 		n.Format(_T("nTotalClonePairs=%d"),nTotalClonePairs);
@@ -454,7 +449,7 @@ bool CloneFiles::extractCloneFiles(CBFXmlNode& p_Node)
 			   } 
             }
 			unsigned int nClonePairs=0;
-			nClonePairs = strHelper.strToInt(value);
+			nClonePairs = CBFStrHelper::strToInt(value);
 
             attrName = (_T("fileA_id"));
 			if( cloneFileNode.hasAttribute(attrName))
@@ -466,7 +461,7 @@ bool CloneFiles::extractCloneFiles(CBFXmlNode& p_Node)
 			   } 
             }
 			unsigned int fileIdA=0;
-			fileIdA= strHelper.strToInt(value);
+			fileIdA= CBFStrHelper::strToInt(value);
 
 			attrName = _T("fileB_id");
 			if( cloneFileNode.hasAttribute(attrName))
@@ -478,7 +473,7 @@ bool CloneFiles::extractCloneFiles(CBFXmlNode& p_Node)
 			   }
 			}
 			unsigned int fileIdB=0;
-			fileIdB= strHelper.strToInt(value);
+			fileIdB= CBFStrHelper::strToInt(value);
 
 			/*
 			CString tmp;
@@ -559,10 +554,10 @@ bool CloneFiles::extractCloneFiles(CBFXmlNode& p_Node)
 						 return false;					
 					}
 
-					int regionBstart_int = strHelper.strToInt( regBstart);
-					int regionBend_int   = strHelper.strToInt( regBend);
-					int regionAstart_int = strHelper.strToInt( regAstart);
-					int regionAend_int   = strHelper.strToInt( regAend);
+					int regionBstart_int = CBFStrHelper::strToInt( regBstart);
+					int regionBend_int   = CBFStrHelper::strToInt( regBend);
+					int regionAstart_int = CBFStrHelper::strToInt( regAstart);
+					int regionAend_int   = CBFStrHelper::strToInt( regAend);
 
 					/*
 					CString tmp3;
@@ -636,8 +631,6 @@ bool CloneFiles::extractCloneFiles(CBFXmlNode& p_Node)
 
 bool CloneFiles::extractTokenReferences(CBFXmlNode& p_Node)
 {
-	CBFStrHelper strHelper;
-	
 	m_tokenRefsVector.clear(); // clear up 
 
 	if( p_Node.isEmpty())
@@ -650,7 +643,7 @@ bool CloneFiles::extractTokenReferences(CBFXmlNode& p_Node)
 	CString tmp(_T(""));
 	if( p_Node.getAttribute(_T("nTotalTokens"),tmp))
 	{
-		nTotalTokens = strHelper.strToInt(tmp);
+		nTotalTokens = CBFStrHelper::strToInt(tmp);
 	    /*
 		CString n;
 		n.Format(_T("nTotalTokens=%d"),nTotalTokens);
@@ -688,7 +681,7 @@ bool CloneFiles::extractTokenReferences(CBFXmlNode& p_Node)
 		{
 			AfxMessageBox(_T("Error in parsing token references node, failed to get the nTokens. Continue..."));
 		} 
-		nTokens = strHelper.strToInt(value_nTokens);
+		nTokens = CBFStrHelper::strToInt(value_nTokens);
 
 		// create the TokenReference record
 		TokenReference tokenReference;
@@ -754,8 +747,8 @@ bool CloneFiles::extractTokenReferences(CBFXmlNode& p_Node)
 				{
 					int fileID(0);
 					int line(0);
-					fileID = strHelper.strToInt(value_fileID);
-					line   = strHelper.strToInt(value_line);
+					fileID = CBFStrHelper::strToInt(value_fileID);
+					line   = CBFStrHelper::strToInt(value_line);
 					Reference ref = {fileID,line};
 
 				    // create a reference record and store it to the vector

@@ -141,17 +141,16 @@ bool ClonePairsAsmFrame::init()
 	newDetectDlg.DoModal();
 	if( newDetectDlg.m_ok)
 	{
-		CBFStrHelper strHelper;
 		try
 		{
-			//int windSize                  = strHelper.strToInt(newDetectDlg.m_windSize);
-			//int stride                    = strHelper.strToInt(newDetectDlg.m_stride);
-			//int maxKOpLvl                 = strHelper.strToInt(newDetectDlg.m_maxKOP);
-			//double ovLap                  = strHelper.strToFloat(newDetectDlg.m_maxOVF);
+			//int windSize                  = CBFStrHelper::strToInt(newDetectDlg.m_windSize);
+			//int stride                    = CBFStrHelper::strToInt(newDetectDlg.m_stride);
+			//int maxKOpLvl                 = CBFStrHelper::strToInt(newDetectDlg.m_maxKOP);
+			//double ovLap                  = CBFStrHelper::strToFloat(newDetectDlg.m_maxOVF);
 			bool bfindExact               = newDetectDlg.m_bFindExactClonesChk ? true : false;
 			bool bfindInExact             = newDetectDlg.m_bFindInexactClonesChk ? true : false;
-			//int keyVectorsSize            = strHelper.strToInt(newDetectDlg.m_keyVectorsSize);
-			double occurrenceThrs         = strHelper.strToFloat(newDetectDlg.m_occurrenceThrs);
+			//int keyVectorsSize            = CBFStrHelper::strToInt(newDetectDlg.m_keyVectorsSize);
+			double occurrenceThrs         = CBFStrHelper::strToFloat(newDetectDlg.m_occurrenceThrs);
 			int regNormLvl                = newDetectDlg.m_regNormalizedLevel;
             bool bNormalizeToken          = newDetectDlg.m_bNormalizeTokenChk ? true : false;
             int inexactMTD                = newDetectDlg.m_inexactMethodLevel; 

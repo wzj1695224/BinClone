@@ -24,12 +24,10 @@
 //---------------------------------------------------------------------------
 
 #include "BFPch.h"
-
-#if !defined(BFMATH_H)
-	#include "BFMath.h"
-#endif
+#include "BFMath.h"
 
 #include <codecogs/maths/combinatorics/arithmetic/binomial_coefficient_gamma.h>
+
 
 //---------------------------------------------------------------------------
 // If overflow error, return ULONG_MAX.
@@ -37,8 +35,10 @@
 ULONG factorial(ULONG num)
 {
     ULONG result = 1;
-    for (ULONG i = 1; i <= num; ++i) {
-        if (result > ULONG_MAX / i) {
+    for (ULONG i = 1; i <= num; ++i)
+	{
+        if (result > ULONG_MAX / i)
+		{
             // overflow.
             ASSERT(false);
             return ULONG_MAX;
@@ -56,23 +56,4 @@ ULONG binomialCoefficient(ULONG n, ULONG m)
     if (res == -1)
         return ULONG_MAX;
     return res;
-    //if (m == 0)
-    //    return 1;
-    //ULONG* b = new ULONG[n + 1];
-    //b[0] = 1;
-    //for (ULONG i = 1; i <= n; ++i) {
-	   // b[i] = 1;
-    //    for (ULONG j = i - 1U; j > 0; --j) {
-    //        if (b[j] > ULONG_MAX - b[j - 1U]) {
-    //            // overflow
-    //            ASSERT(false);
-    //            return ULONG_MAX;
-    //        }
-	   //     b[j] += b[j - 1U];
-    //    }
-    //}
-    //ULONG res = b[m];
-    //delete [] b;
-    //b = NULL;
-    //return res;
 }

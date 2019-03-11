@@ -156,7 +156,6 @@ void NewDetectDialog::OnBnClickedOk()
 
     UpdateData(TRUE);
 
-	CBFStrHelper strHelp;
 	m_asmFilePath.Empty();
 	
 	if( !m_withSearchCode)
@@ -178,14 +177,14 @@ void NewDetectDialog::OnBnClickedOk()
 	g_bFindExactClonesChk = m_bFindExactClonesChk;
 	g_bFindInexactClonesChk = m_bFindInexactClonesChk;
 	
-	if (m_occurrenceThrs.GetLength() <= 0 || !strHelp.isNumeric(m_occurrenceThrs))
+	if (m_occurrenceThrs.GetLength() <= 0 || !CBFStrHelper::isNumeric(m_occurrenceThrs))
 	{
 		AfxMessageBox(_T("Minimum co-occurrence threshold is invalid."));
 		return;
 	}
 	else
 	{
-		double tmp = strHelp.strToFloat(m_occurrenceThrs);
+		double tmp = CBFStrHelper::strToFloat(m_occurrenceThrs);
 		if (tmp < 0.1 || tmp > 1)
 		{
 		    AfxMessageBox(_T("Minimum co-occurrence threshold must be between 0.1 and 1."));

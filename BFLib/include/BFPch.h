@@ -19,12 +19,8 @@
 //      are changed infrequently
 //
 
-#if !defined(BFPCH_H)
-#define BFPCH_H
-
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
+
 
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 
@@ -36,35 +32,14 @@
 
 #define _BFLIB_ENABLE_64BIT
 
-#if !defined (TYPES_HPP)
-    #include "types.hpp"
-#endif
+#include "types.hpp"
+#include "BFFileHelper.h"
+#include "BFStrHelper.h"
+#include "BFDateHelper.h"
+#include "BFStrPser.h"
+#include "BFMultiDimAry.h"
+#include "BFXmlPser.h"
 
-#if !defined(BFFILEHELPER_H)
-    #include "BFFileHelper.h"
-#endif
-
-#if !defined(BFSTRHELPER_H)
-	#include "BFStrHelper.h"
-#endif
-
-#if !defined(BFDATEHELPER_H)
-	#include "BFDateHelper.h"
-#endif
-
-#if !defined(BFSTRPSER_H)
-	#include "BFStrPser.h"
-#endif
-
-#if !defined(BFMULTIDIMARY_H)
-    #include "BFMultiDimAry.h"
-#endif
-
-#if !defined(BFXMLPSER_H)
-    #include "BFXmlPser.h"
-#endif
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
-
-#endif // !defined(BFPCH_H)

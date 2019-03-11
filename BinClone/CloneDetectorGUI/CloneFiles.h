@@ -22,17 +22,21 @@
 #include "BFXmlPser.h"
 #include <vector>
 #include <map>
-#include <hash_map>
+#include <unordered_map>
 
 
 //-----------------------------------------------------------------------------
 // CString helper functions for hash_map
 //-----------------------------------------------------------------------------
 template<>
-inline size_t stdext::hash_value< CString >(const CString & s)
+struct std::hash<CString>
 {
-    return stdext::hash_value((LPCTSTR)s);
-}
+	size_t operator()(const CString &s) const noexcept
+	{
+		return std::hash<LPCTSTR>{}((LPCTSTR)s);
+	}
+};
+
 
 struct Region
 {
@@ -218,7 +222,7 @@ public:
     typedef std::map<int,CString>  AsmFilesMap_t; 
     typedef	std::vector<CloneFile> CloneFileVector_t;
 	typedef bool (CloneFiles::*pF)(CBFXmlNode &);
-	typedef std::hash_map<CString, pF> FuncPtrMap_t;
+	typedef std::unordered_map<CString, pF> FuncPtrMap_t;
 	typedef std::vector<TokenReference> TokenRefsVector_t;
 
 	CloneFiles();

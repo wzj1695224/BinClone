@@ -26,8 +26,7 @@
 //
 //---------------------------------------------------------------------------
 
-#if !defined (TYPES_HPP)
-#define TYPES_HPP
+#pragma once
 
 #if defined (LARGE_TWIPS)
     #define TWIP_IS_5TWIPS
@@ -699,6 +698,4 @@ typedef Boolean (* ActionFunction) (void * object, void * parameters);
                                                            }
     #endif //!defined (PLAT_STRICT_ALIGNMENT)
 #endif //(SAFE_ASSIGNMENT3)
-
-#endif //!defined (TYPES_HPP)
 

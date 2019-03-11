@@ -26,31 +26,18 @@
 //---------------------------------------------------------------------------
 
 #include "BFPch.h"
+#include "BFFileHelper.h"
 
-#if !defined(BFFILEHELPER_H)
-	#include "BFFileHelper.h"
-#endif
 
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
-CBFFileHelper::CBFFileHelper()
-{
-}
 
-CBFFileHelper::~CBFFileHelper()
-{
-}
 
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
 bool CBFFileHelper::removeFile(LPCTSTR filename)
 {
     return _tremove(filename) == 0;
 }
 
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
-bool CBFFileHelper::getTempFolderPath(CString& tempFolderPath)
+
+bool CBFFileHelper::getTempFolderPath(CString &tempFolderPath)
 {
     TCHAR tPath[_MAX_PATH];
     if (GetTempPath(_MAX_PATH, tPath) == 0)
@@ -60,9 +47,8 @@ bool CBFFileHelper::getTempFolderPath(CString& tempFolderPath)
     return true;
 }
 
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
-void CBFFileHelper::splitPath(LPCTSTR fullPath, CString& drive, CString& dir, CString& fname, CString& ext)
+
+void CBFFileHelper::splitPath(LPCTSTR fullPath, CString &drive, CString &dir, CString &fname, CString &ext)
 {
     TCHAR tDrive[_MAX_DRIVE];
     TCHAR tDir[_MAX_DIR];
@@ -76,13 +62,13 @@ void CBFFileHelper::splitPath(LPCTSTR fullPath, CString& drive, CString& dir, CS
     ext = tExt;
 }
 
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
-bool CBFFileHelper::replaceExtension(LPCTSTR fname, LPCTSTR ext, CString& res)
+
+bool CBFFileHelper::replaceExtension(LPCTSTR fname, LPCTSTR ext, CString &res)
 {
     res = fname;
     int dotPos = res.ReverseFind(TCHAR('.'));
-    if (dotPos == -1) {
+    if (dotPos == -1)
+	{
         res.Empty();
         return false;
     }

@@ -18,18 +18,14 @@
 // Copy from http://www.axter.com/faq/topic.asp?TOPIC_ID=61&FORUM_ID=4&CAT_ID=9
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(BFMULTIDIMARY_H)
-#define BFMULTIDIMARY_H
-
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
+
 
 template < class T > 
 class CBFMultiDimArray
 {
 public:
-    CBFMultiDimArray(int qty_dim, int* dim_def)
+    CBFMultiDimArray(int qty_dim, int *dim_def)
         :m_qty_dim(qty_dim), m_dim_def(new int[qty_dim]), m_data(NULL)
     {
         int i, FullBufSize = 1;
@@ -53,7 +49,7 @@ public:
     class NextDim
     {
     public:
-        NextDim(TT* ptr, int* dim_def, int qty_dim)
+        NextDim(TT *ptr, int *dim_def, int qty_dim)
             : m_data(ptr), m_dim_def(dim_def), m_qty_dim(qty_dim) {}
 
         NextDim < T > & operator[](int i) 
@@ -76,8 +72,8 @@ public:
         }
 
     private:
-        TT* m_data;
-        int* m_dim_def;
+        TT *m_data;
+        int *m_dim_def;
         int m_qty_dim;
     };
 
@@ -87,9 +83,9 @@ public:
     }
 
 private:
-    T* m_data; 
+    T *m_data; 
     const int m_qty_dim;
-    int* m_dim_def;
+    int *m_dim_def;
 };
 
 /* Usage
@@ -121,5 +117,3 @@ void TestMultiDimArray2()
     } 
 }
 */
-
-#endif

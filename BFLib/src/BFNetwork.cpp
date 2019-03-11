@@ -23,10 +23,8 @@
 //---------------------------------------------------------------------------
 
 #include "BFPch.h"
+#include "BFNetwork.h"
 
-#if !defined(BFNETWORK_H)
-	#include "BFNetwork.h"
-#endif
 
 CString getServerIP()
 {
@@ -36,7 +34,7 @@ CString getServerIP()
     if (!pHost)
         return _T("");
 
-	struct in_addr* ptr = (struct in_addr*)pHost->h_addr_list[0];
+	struct in_addr *ptr = (struct in_addr*)pHost->h_addr_list[0];
     if (!ptr)
         return _T("");
 
