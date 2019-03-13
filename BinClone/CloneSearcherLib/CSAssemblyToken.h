@@ -23,12 +23,13 @@
 
 #pragma once
 
-typedef enum {
+typedef enum
+{
     CSTOKEN_TYPE_MNEMONIC,    // mnemonic
     CSTOKEN_TYPE_OPMEM,       // operand: memory references, e.g., [0x805b634]
     CSTOKEN_TYPE_OPREG,       // operand: register references, e.g., eax
     CSTOKEN_TYPE_OPVAL,       // operand: constant values, e.g., 0x10
-	CSTOKEN_TYPE_CALLorJMP,  //CALLJMP
+	CSTOKEN_TYPE_CALLorJMP,   // CALL JMP
     CSTOKEN_TYPE_UNKNOWN
 } CCSAssemblyTokenType;
 

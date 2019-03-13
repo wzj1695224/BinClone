@@ -23,6 +23,7 @@
 
 #pragma once
 
+
 class CCSParam
 {
 public:
@@ -34,6 +35,7 @@ public:
     int m_windowSize;
     int m_stride;    
 };
+
 
 typedef CTypedPtrArray<CPtrArray, CCSParam*> CCSParamArray;
 class CCSParams : public CCSParamArray

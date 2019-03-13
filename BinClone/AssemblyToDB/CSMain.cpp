@@ -75,6 +75,7 @@ bool parseArgs(int                   nArgs,
         ASSERT(false);
         return false;
     }
+
 	windowSize = StrToInt(argv[6]);
 	stride = StrToInt(argv[7]);
     return true;
@@ -104,7 +105,8 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 			CString dbName, dbUser, dbPwd, assemblyFolderPath;
             int windSize = 0, stride = 0;
             TCSRegNormalizeLevel regNormLevel = CS_NORM_REG_ROOT;
-			if (!parseArgs(argc, argv, dbName, dbUser, dbPwd, assemblyFolderPath, regNormLevel, windSize, stride)) { 
+			if (!parseArgs(argc, argv, dbName, dbUser, dbPwd, assemblyFolderPath, regNormLevel, windSize, stride))
+			{ 
 				tcout << _T("Input Error: invalid arguments") << endl;
 				return 1;
 			}
@@ -137,10 +139,6 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 //---------------------------------------------------------------------------
 void printTime()
 {
-    //CTime t = CTime::GetCurrentTime();
-    //CString s = t.Format(_T("%H:%M:%S"));
-    //DEBUGPrint(_T("Current System Time = %s\n"), s);
-
     time_t ltime;
     time(&ltime);
     tcout << _T("Current System Time = ") << ltime << endl;

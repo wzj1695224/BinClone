@@ -140,10 +140,10 @@ private:
     long getTime();
     long get_runtime();
 
-    CCSDatabaseMgr m_dbMgr;
-    CCSTokenRefMgr m_tokRefMgr;
-    CCSAssemblyFileMgr m_assemblyFileMgr;
+    CCSDatabaseMgr		m_dbMgr;
+    CCSTokenRefMgr		m_tokRefMgr;
+    CCSAssemblyFileMgr	m_assemblyFileMgr;
 
-    CCSAssemblyFile* m_pTargetAssemblyFile;
-    CCSParams m_allParams;
+    CCSAssemblyFile		*m_pTargetAssemblyFile;
+    CCSParams			m_allParams;
 };

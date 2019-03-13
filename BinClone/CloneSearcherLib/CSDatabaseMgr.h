@@ -28,6 +28,7 @@
 #include "CSIndexedToken.h"
 #include "libpq-fe.h"
 
+
 class CCSDatabaseMgr
 {
 	PGconn *m_pPGDBconnection;

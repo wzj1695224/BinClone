@@ -28,12 +28,15 @@ typedef CBFMultiDimArray<int> CCSMDIntArray;
 //typedef CArray<COleDateTime, COleDateTime>  CCSTimeArray;
 typedef CMap<CString, LPCTSTR, int, int> CCSMapStringToInt;
 
-enum TCSRegNormalizeLevel {
+
+enum TCSRegNormalizeLevel
+{
     CS_NORM_REG_ROOT,       // normlize all registers to REG
     CS_NORM_REG_TYPE,       // normalize registers to one of the four types: general, segment, indexes, and EFLAGS
     CS_NORM_REG_IDXPTR,     // normalize indexes and pointers registers to one of the two types: index, and pointer, e.g., EDI -> REGIDX, EBP -> REGPTR
     CS_NORM_REG_BITS        // normalize general registers to 32-bit, 16-bit, 8-bit, e.g., EAX -> REG32, AX -> AX16, AH -> REG8
 };
+
 
 #define CS_NUM_MNEMONICS                    91
 static CString gMnemonics [] = {

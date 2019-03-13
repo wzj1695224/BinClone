@@ -17,9 +17,9 @@
 #include "StdAfx.h"
 #include "CSDatabaseMgr.h"
 
+
 CCSDatabaseMgr::CCSDatabaseMgr(LPCTSTR dbName, LPCTSTR dbUser, LPCTSTR dbPwd)
-	:m_nDBTotalRegions(0),
-		m_firstDBRegionIDInt(0)
+	:m_nDBTotalRegions(0), m_firstDBRegionIDInt(0)
 {
     // initiate a connection object
     // better dynamically allocate a connection object with a pointer.
@@ -42,14 +42,9 @@ CCSDatabaseMgr::CCSDatabaseMgr(LPCTSTR dbName, LPCTSTR dbUser, LPCTSTR dbPwd)
         return;
     }
     
-    CStringA connectStr = "dbname = \'";
-    connectStr += dbNameANSI + "\'";
-    connectStr += " user = \'";
-    connectStr += dbUserANSI + "\'";
-    connectStr += " password = \'";
-    connectStr += dbPwdANSI + "\'";
-    connectStr += " connect_timeout = \'3\'";
-	m_pPGDBconnection = PQconnectdb((LPCSTR) connectStr);	
+	CStringA sConnect;
+	sConnect.Format("dbname = \'%s\'  user = \'%s\' password = \'%s\' connect_timeout = \'3\'", (LPCSTR)dbNameANSI, (LPCSTR)dbUserANSI, (LPCSTR)dbPwdANSI);
+	m_pPGDBconnection = PQconnectdb((LPCSTR)sConnect);
 	if (!m_pPGDBconnection) {
 		tcout << _T("CSDataBaseMgr: failed to initiate a connection to the Postgre Database.") <<  endl;
         ASSERT(false);
@@ -64,6 +59,7 @@ CCSDatabaseMgr::~CCSDatabaseMgr()
     // close and deallocate the connection object
 	PQfinish(m_pPGDBconnection);
 }
+
 
 //
 // Store one combination of oparameters. Return existing paramID if this combination of parameters already exists.

@@ -48,11 +48,13 @@ void CCSParams::cleanup()
 
 bool CCSParams::addParam(CCSParam* pParam)
 {
-    try {
+    try
+	{
         Add(pParam);
         return true;
     }
-    catch (CMemoryException&) {
+    catch (CMemoryException&)
+	{
         tcout << _T("CCSParams: failed to add param with dbParamID: ") << pParam->m_dbParamID << endl;
         ASSERT(false);
         return false;
